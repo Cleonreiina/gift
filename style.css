@@ -1,0 +1,185 @@
+body {
+    background-color: #120d10; 
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+#heart-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px;
+    border: 1px solid rgba(255, 182, 193, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    backdrop-filter: blur(15px);
+    max-width: 400px;
+    width: 85%;
+    transition: transform 0.2s ease;
+}
+
+/* Animasi Guncang Kalau Salah Jawab Kalkulator */
+.shake {
+    animation: shakeAnim 0.3s ease-in-out;
+}
+
+@keyframes shakeAnim {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+/* Bingkai Bulat Atas */
+.icon-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 4px solid #ffb6c1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 182, 193, 0.1);
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.4);
+    animation: pulse 1.5s infinite ease-in-out;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#icon-svg {
+    width: 65px; height: 65px; fill: #ffb6c1; 
+    filter: drop-shadow(0 0 8px rgba(255, 182, 193, 0.8));
+}
+
+.frame-image {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 50%;
+}
+
+/* Transisi Antar Halaman */
+.phase-container {
+    display: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.phase-container.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title { font-size: 1.15rem; color: #fce4ec; margin-bottom: 20px; }
+
+/* Slider Tahun Lahir */
+#year-slider {
+    -webkit-appearance: none;
+    width: 80%; height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px; outline: none; margin-bottom: 15px;
+}
+
+#year-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #ffb6c1; cursor: pointer;
+    box-shadow: 0 0 10px #ffb6c1;
+}
+
+#year-display { font-size: 1.5rem; font-weight: bold; color: #ffb6c1; margin-bottom: 25px; }
+
+/* Style Kalkulator Mini */
+.calculator-box {
+    background: rgba(255, 182, 193, 0.08);
+    border: 2px solid #ffb6c1;
+    border-radius: 20px;
+    padding: 12px;
+    max-width: 200px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(255, 182, 193, 0.15);
+}
+
+.calc-screen {
+    background: #231920;
+    border-radius: 10px;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    padding: 0 15px;
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffb6c1;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.calc-buttons button {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 182, 193, 0.2);
+    color: #ffffff;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.calc-buttons button:active {
+    transform: scale(0.95);
+    background: rgba(255, 182, 193, 0.3);
+}
+
+.calc-buttons .btn-clear { background: #e57373; color: #fff; }
+.calc-buttons .btn-equal { background: #ffb6c1; color: #120d10; }
+
+.error-text {
+    font-size: 0.8rem;
+    color: #ff5252;
+    margin-top: 8px;
+    height: 15px;
+}
+
+/* Tombol Kirim Slider */
+.btn-lanjutkan {
+    background: linear-gradient(45deg, #ff8da1, #ffb6c1);
+    color: #120d10; border: none; padding: 10px 30px;
+    font-size: 0.9rem; font-weight: bold; border-radius: 20px;
+    cursor: pointer; box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+h1 { color: #ffb6c1; font-size: 1.5rem; margin-bottom: 15px; text-shadow: 0 0 15px rgba(255, 182, 193, 0.3); }
+#typing-text { font-size: 1rem; line-height: 1.6; color: #fce4ec; min-height: 3em; }
+.hint-text { font-size: 0.8rem; color: #ffb6c1; opacity: 0.8; }
+.small-heart { color: #ffb6c1; font-size: 25px; animation: beat 0.8s infinite alternate; }
+@keyframes beat { to { transform: scale(1.2); } }
+.particle { position: absolute; color: #ffb6c1; font-size: 15px; opacity: 0.7; animation: fall linear forwards; }
+@keyframes fall { to { transform: translateY(110vh); } }
+footer { margin-top: 20px; font-size: 0.7rem; color: #887a7e; letter-spacing: 2px; text-transform: uppercase; }
